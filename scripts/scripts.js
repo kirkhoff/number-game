@@ -36,8 +36,14 @@ function onGuess() {
     var guessObj = document.getElementById("userGuess").value;
     guessNum += 1;
 
-    if (guessNum < 10) {
-        alert("You guessed " + guessObj + ". " +  "You have " + (10 - guessNum) + " guesses remaining.");
+    if (guessNum < 10 && guessObj < randomNum) {
+        //4. Evaluate if their guess is higher or lower than the random number
+        //5. If higher, display "higher", if lower, display "lower"
+        alert("Higher. You guessed " + guessObj + ". " + "You have " + (10 - guessNum) + " guesses remaining.");
+    } else if (guessNum < 10 && guessObj > randomNum) {
+        alert("Lower. You guessed " + guessObj + ". " + "You have " + (10 - guessNum) + " guesses remaining.");
+    } else if (guessNum < 10 && guessObj == randomNum) {
+        alert ("Winner, winner, chicken dinner!");
     } else {
         alert("You have no remaining guesses.");
     }
