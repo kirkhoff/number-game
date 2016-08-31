@@ -12,8 +12,10 @@
             <h3>Welcome to the Number Guessing Game!</h3>
             <span class="instructions">We have randomnly generated a number between 1 and 100. You may guess up to 10 times and after each guess, we will let you know if your guess was low or high.</span>
             <p>Enter Your Guess:</p>
-            <input type="text" class="input-box" id="userGuess">
-            <button type="submit" onclick="onGuess()" id="submitGuess">Submit Your Guess</button>
+            <form onsubmit="onGuess()">
+                <input type="text" class="input-box" id="userGuess" name="userGuess">
+                <input type="submit" value="Submit Your Guess">
+            </form>
         </div>
     </div>
 </body>
