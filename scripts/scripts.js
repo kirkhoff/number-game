@@ -17,12 +17,15 @@
 
 //Variables
 
-var randomNum = randomNumFunc(1,100);
-var guessNum = 0;
+var minNum = 1;
+var maxNum = 100;
+var randomNum = randomNumFunc(minNum, maxNum);
+var guessCounter = 0;
+var maxNumGuesses = 10;
 
 
 // 1. Generate a random number between 1-100, store this number
-function randomNumFunc(min,max) {
+function randomNumFunc(min, max) {
     return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
@@ -33,18 +36,18 @@ function randomNumFunc(min,max) {
 
 //3. Keep track of what guess number they're on, store this number
 function onGuess() {
-    var guessObj = document.getElementById("userGuess").value;
-    guessNum += 1;
+    var userGuessVal = document.getElementById('userGuess').value;
+    guessCounter ++;;
 
-    if (guessNum < 10 && guessObj < randomNum) {
+    if (guessCounter < maxNumGuesses && userGuessVal < randomNum) {
         //4. Evaluate if their guess is higher or lower than the random number
         //5. If higher, display "higher", if lower, display "lower"
-        alert("Higher. You guessed " + guessObj + ". " + "You have " + (10 - guessNum) + " guesses remaining.");
-    } else if (guessNum < 10 && guessObj > randomNum) {
-        alert("Lower. You guessed " + guessObj + ". " + "You have " + (10 - guessNum) + " guesses remaining.");
-    } else if (guessNum < 10 && guessObj == randomNum) {
-        alert ("Winner, winner, chicken dinner!");
+        alert('Higher. You guessed ' + userGuessVal + '. ' + 'You have ' + (maxNumGuesses - guessCounter) + ' guesses remaining.');
+    } else if (guessCounter < maxNumGuesses && userGuessVal > randomNum) {
+        alert('Lower. You guessed ' + userGuessVal + '. ' + 'You have ' + (maxNumGuesses - guessCounter) + ' guesses remaining.');
+    } else if (guessCounter < maxNumGuesses && userGuessVal === randomNum) {
+        alert ('Winner, winner, chicken dinner!');
     } else {
-        alert("You have no remaining guesses.");
+        alert('You have no remaining guesses.');
     }
 }
